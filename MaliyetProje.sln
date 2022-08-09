@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaliyetEntities", "MaliyetE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaliyetCore", "MaliyetCore\MaliyetCore.csproj", "{75896CC0-1FBE-493E-A49B-224830A7C3B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCUI", "MVCUI\MVCUI.csproj", "{CD423271-76C7-455E-9313-71B5AEB904B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{75896CC0-1FBE-493E-A49B-224830A7C3B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75896CC0-1FBE-493E-A49B-224830A7C3B3}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{75896CC0-1FBE-493E-A49B-224830A7C3B3}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{CD423271-76C7-455E-9313-71B5AEB904B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD423271-76C7-455E-9313-71B5AEB904B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD423271-76C7-455E-9313-71B5AEB904B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD423271-76C7-455E-9313-71B5AEB904B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

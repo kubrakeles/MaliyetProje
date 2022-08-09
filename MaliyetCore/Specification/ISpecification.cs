@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaliyetCore.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace MaliyetCore.Specification
 {
-    public interface ISpecification<T>
+    public interface ISpecification<Tender>      
     {
-        Expression<Func<T, bool>> Criteria { get; } 
-        List<Expression<Func<T,Object>>> Includes { get; }
-
-
-
-
+        Expression<Func<Tender, bool>> Criteria { get; } 
+        List<Expression<Func<Tender,Object>>> Includes { get; }
+       // Expression<Func<T,Object>> IncludesExpression { get; }
     }
 }

@@ -2,6 +2,7 @@
 using MaliyetCore.Utilities.Results;
 using MaliyetDataAccess.Abstract;
 using MaliyetDataAccess.Concrete.EntityFramework;
+using MaliyetDataAccess.Data;
 using MaliyetEntities;
 using System;
 using System.Collections.Generic;
@@ -30,14 +31,21 @@ namespace MaliyetBusiness.Concrete
             return new SuccessResult("İhale Başarı ile Silindi.");
         }
 
+        public async Task< IReadOnlyList<Tender>> GetAllWithSpec()
+        {
+            var spec = new TendersWithTenderTypeSpec();
+
+            return await _tenderDAL.GetListWithSpec(spec);
+        }
+
         public IDataResult<Tender> GetById(int Id)
         {
             return new SuccessDataResult<Tender>(_tenderDAL.Get(filter: p => p.Id == Id)) ;
         }
 
-        public IDataResult<List<Tender>> GetList()
+        public IList<Tender> GetList()
         {
-            return new SuccessDataResult<List<Tender>>(_tenderDAL.GetList().ToList());
+            return _tenderDAL.GetList().ToList();
         }
 
         public IDataResult<List<Tender>> GetListByTenderType(int TypeID)
@@ -55,5 +63,7 @@ namespace MaliyetBusiness.Concrete
             _tenderDAL.Update(tender);
             return new SuccessResult("İhale Başarı ile Güncellendi");
         }
+
+
     }
 }

@@ -6,8 +6,6 @@ namespace MaliyetApi.Controllers
     [Route(template: "api/[controller]")]
     public class TenderController : Controller
     {
-       
-
         private ITenderService _tenderService;
         public TenderController(ITenderService tenderService)
         {
@@ -17,16 +15,16 @@ namespace MaliyetApi.Controllers
         [HttpGet(template:"GetAllTender")]
         public IActionResult GetList()
         {
-            var result=_tenderService.GetList();
-            if (result.Success)
+            var result = _tenderService.GetAllWithSpec();
+            if (result is not null)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             else
-                return BadRequest(result.Message);
+                return BadRequest("veriler yüklenemedi");
 
         }
-
+        [HttpGet(template: "GetWithType")]
         public IActionResult GetTenderById(int id)
         {
             var result = _tenderService.GetById(id);
@@ -38,10 +36,9 @@ namespace MaliyetApi.Controllers
             else
                 return BadRequest(result.Message);
         }
-
+        [HttpGet(template: "GetWithUnit")]
         public IActionResult GetByUnitId(int id)
         {
-
             var result = _tenderService.GetListByUnitType(id);
             if (result.Success)
             {
@@ -49,9 +46,6 @@ namespace MaliyetApi.Controllers
             }
             else
                 return BadRequest(result.Message);   
-
-
-
 
         }
         

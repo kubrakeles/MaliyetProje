@@ -1,4 +1,5 @@
 using MaliyetCore.Entities;
+using MaliyetCore.Specification;
 using System.Linq.Expressions;
 
 namespace MaliyetCore.DataAccess
@@ -10,7 +11,7 @@ public interface IEntityRepository<T> where T: class, IEntity
  void Add (T entity);
  void Update (T Entity);
  void Delete (T Entity);
-
+ Task<IReadOnlyList<T>> GetListWithSpec(ISpecification<T> spec);
 
 }
 }

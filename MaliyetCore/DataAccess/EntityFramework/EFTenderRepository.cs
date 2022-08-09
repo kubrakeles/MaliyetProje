@@ -10,9 +10,5 @@ namespace MaliyetCore.DataAccess.EntityFramework
     {
 
 
-
-
-
-
     }
 }

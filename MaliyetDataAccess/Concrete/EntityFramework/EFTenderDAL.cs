@@ -12,11 +12,6 @@ namespace MaliyetDataAccess.Concrete.EntityFramework
 {
     public class EFTenderDAL :EFEntityRepositoryBase<Tender,TenderContext>,ITenderDAL
     {
-        public async Task<Tender> GetUnitByID(int id)
-        {
-
-
-        }
-
+ 
     }
 }
