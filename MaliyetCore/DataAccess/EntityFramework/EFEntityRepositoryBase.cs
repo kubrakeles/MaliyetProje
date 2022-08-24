@@ -38,19 +38,17 @@ namespace MaliyetCore.DataAccess.EntityFramework
 
                 return context.Set<Tentity>().SingleOrDefault(filter);
             }
-
         }
 
         public IList<Tentity> GetList(Expression<Func<Tentity, bool>> filter = null)
         {
             using (var context = new TContext())
             {
-                    return filter == null ?
-                    context.Set<Tentity>().ToList() :
-                    context.Set<Tentity>().Where(filter).ToList();
+                return filter == null ?
+                context.Set<Tentity>().ToList() :
+                context.Set<Tentity>().Where(filter).ToList();
             }
         }
-
         public async Task<IReadOnlyList<Tentity>> GetListWithSpec(ISpecification<Tentity> spec)
         {   using (var context = new TContext()) 
             { 

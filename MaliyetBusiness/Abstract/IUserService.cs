@@ -1,4 +1,5 @@
-﻿using MaliyetEntities.Concrete;
+﻿using MaliyetCore.Entities.Concrete;
+using MaliyetEntities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;

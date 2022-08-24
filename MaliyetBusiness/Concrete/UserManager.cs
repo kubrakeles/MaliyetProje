@@ -1,4 +1,5 @@
 ﻿using MaliyetBusiness.Abstract;
+using MaliyetCore.Entities.Concrete;
 using MaliyetDataAccess.Abstract;
 using MaliyetEntities.Concrete;
 using System;

@@ -1,6 +1,7 @@
 
 
 
+using MaliyetCore.Entities.Concrete;
 using MaliyetEntities;
 using MaliyetEntities.Concrete;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +30,7 @@ public class TenderContext:DbContext
             .AddJsonFile("appsettings.json")
             .Build();
 
-        var connectionString = configuration.GetConnectionString("ConnectionContext");
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
         optionsBuilder.UseSqlServer(connectionString);
     }
 
@@ -37,7 +38,7 @@ public class TenderContext:DbContext
     public DbSet<TenderType> TenderTypes { get; set; }
     public DbSet<Unit> Units { get; set; }
     public DbSet<User> Users { get; set; }
-    public DbSet<OperationClaim> OperationClaims { get; set; }
+    public DbSet<OperationClaim> OperationClaim { get; set; }
     public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
 

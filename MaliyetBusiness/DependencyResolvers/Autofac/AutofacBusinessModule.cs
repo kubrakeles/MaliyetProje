@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MaliyetDataAccess.Concrete.EntityFramework;
 using MaliyetDataAccess.Abstract;
+using MaliyetCore.Utilities.Security.Jwt;
 
 namespace MaliyetBusiness.DependencyResolvers.Autofac
 {
@@ -23,6 +24,16 @@ namespace MaliyetBusiness.DependencyResolvers.Autofac
             builder.RegisterType<UserManager>().As<IUserService>();
 
             builder.RegisterType<EFUserDAL>().As<IUserDAL>();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>();
+
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>();
+
+            builder.RegisterType<TenderTypeManager>().As<ITenderTypeService>();
+
+            builder.RegisterType<EFTenderTypeDAL>().As<ITenderTypeDAL>();
+
+           
 
         }
     }

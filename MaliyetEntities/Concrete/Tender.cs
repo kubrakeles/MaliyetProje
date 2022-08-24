@@ -33,8 +33,11 @@ public string City { get; set; }
 public string Scor { get; set; } // puanlama
 public string PriceDifference { get; set; } //Fiyat Farkı
 public string OtherExplanation { get; set; } //Diğer Açıklama
+public DateTime TenderDateArrived { get; set; } //İhalenin geldiği tarih
+ public string TenderTypeName { get; set; } //İhale Usülü
+public string TenderState { get; set; } // ihale durumu
 
 
-}
+    }
 
 }

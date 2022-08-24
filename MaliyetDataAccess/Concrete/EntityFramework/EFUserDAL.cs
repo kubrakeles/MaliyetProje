@@ -1,4 +1,5 @@
 ﻿using MaliyetCore.DataAccess.EntityFramework;
+using MaliyetCore.Entities.Concrete;
 using MaliyetDataAccess.Abstract;
 using MaliyetDataAccess.Concrete.EntityFramework.Contexts;
 using MaliyetEntities.Concrete;
@@ -23,7 +24,7 @@ namespace MaliyetDataAccess.Concrete.EntityFramework
         {
             using (var context = _tenderContext)
             {
-                var result = from OperationClaim in context.OperationClaims
+                var result = from OperationClaim in context.OperationClaim
                              join UserOperationClaim in context.UserOperationClaims
                              on OperationClaim.Id equals UserOperationClaim.OperationClaimId
                              where UserOperationClaim.UserId == user.Id
