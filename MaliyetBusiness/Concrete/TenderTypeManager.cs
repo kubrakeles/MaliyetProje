@@ -31,10 +31,20 @@ namespace MaliyetBusiness.Concrete
             return new SuccessResult("İhale Türü Silindi");
         }
 
+        public TenderType Get(int id)
+        {
+            return _tenderTypeDAL.Get(filter: p => p.Id == id);
+        }
+
         public IList<TenderType> GetList()
         {
           
             return _tenderTypeDAL.GetList();
+        }
+
+        public Unit GetUnit(int unitId)
+        {
+            return _tenderTypeDAL.GetUnitById(unitId);
         }
 
         public IList<Unit> GetUnits()

@@ -1,4 +1,6 @@
-﻿@{
+﻿
+@model TenderIndexModel
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -23,7 +25,7 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Yarışma</h2>
+                            <h2 class="content-header-title float-left mb-0">Maliyet Aşamaları İzleme</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
@@ -33,7 +35,7 @@
                                         <a href="#">İhaleler</a>
                                     </li>
                                     <li class="breadcrumb-item active">
-                                       Maliyet Aşamaları
+                                       Genel Liste
                                     </li>
                                 </ol>
                             </div>
@@ -62,7 +64,7 @@
                                                 <th>Birim</th>
                                                <th>İhalenin Geldiği Tarih</th>
                                                <th>Durumu</th>
-                                               <th>İşlemler</th>
+                                               <th>Detay</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -75,6 +77,7 @@
 
             </div>
         </div>
+          
     <!-- END: Content-->
     <!-- END: Content-->
     @section JsPageVendorSpecification
@@ -84,6 +87,87 @@
     <script src="~/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
     <script src="~/app-assets/vendors/js/tables/datatable/responsive.bootstrap4.js"></script>
     <script src="~/app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js"></script>
+    
+<script type="text/javascript">
+$(function() {
+
+    $.ajax({
+        type: "GET",
+        url: "/Tender/GetAllTender",
+        datatype: "json",
+        success: OnSuccess,
+             failure: function (response) {
+                    alert(response.d);
+                },
+                error: function (response) {
+                    alert(response.d);
+                }
+
+    });
+    console.log("function");
+    });
+    function OnSuccess(response) {
+        console.table(response);
+        
+        $(".dt-responsive").DataTable(
+            {
+                bLengthChange: true,
+                bFilter: true,
+                bSort: true,
+                bPaginate: true,
+                data: response,
+                columns: [
+                    { 'data': 'tenderID' },
+                    { 'data': 'isinAdi' },
+                    { 'data': 'ihaleTuru' },
+                    { 'data': 'birimAdi' },
+                    { 'data': 'ihaleGeldigiTarih' },
+                    { 'data': 'durum' },
+                    {
+                        "render": function(data, type, full, meta) {
+                            return '<a class="btn btn-info" href="/Tender/TenderDetails/' +
+                                full.tenderID + '">Detaylar</a>';
+                            console.log(full.TenderID);
+                        }
+                    },
+                ],
+                columnDefs: [
+                    {
+                        className: 'control',
+                        orderable: false,
+                        targets: 0
+                    }
+                ],
+                dom:
+                    '<"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+                responsive: {
+                    details: {
+                        display: $.fn.dataTable.Responsive.display.modal({
+                            header: function(row) {
+                                var data = row.data();
+                                return ' Kişi Bilgileri';
+                            }
+                        }),
+                        type: 'column',
+                        renderer: $.fn.dataTable.Responsive.renderer.tableAll({
+                            tableClass: 'table'
+                        })
+                    }
+                },
+                language: {
+                    url: "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json",
+                    paginate: {
+                        // remove previous & next text from pagination
+                        previous: '&nbsp;',
+                        next: '&nbsp;'
+                    }
+                }
+            });
+        $('.dataTables_filter .form-control').removeClass('form-control-sm');
+        $('.dataTables_length .custom-select').removeClass('custom-select-sm').removeClass('form-control-sm');
+    };
+
+</script>
 }
     @section JsPageSpecification
     {
@@ -91,117 +175,8 @@
     <script src="~/app-assets/js/core/app.js"></script>
     <!-- END: Theme JS-->
 }
+
    
 
-    <script type="text/javascript">
-        $(function() {
-            $('#').addClass('active');
-            $.ajax({
-                type: "GET",
-                url: "/Panel/Jury/LoadJury",
-                data: '{}',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: OnSuccess,
-                failure: function(response) {
-                    alert(response.d);
-                },
-                error: function(response) {
-                    alert(response.d);
-                }
-            });
-
-        });
-        function OnSuccess(response) {
-            $(".dt-responsive").DataTable(
-                {
-                    bLengthChange: true,
-                    //lengthMenu: [[5, 10, -1], [5, 10, "All"]],
-                    bFilter: true,
-                    bSort: true,
-                    bPaginate: true,
-                    data: response,
-                    columns: [
-                        { 'data': 'juryId' },
-                        {
-                            'data': 'picture',
-                            "render": function(data, type, full, meta) {
-                                var $output,
-                                    $image = full['picture'];
-                                if ($image) {
-                                    // For Avatar image
-                                    $output = ' <img class="card-img-top" src="' + full.picture + '" style="width:6em" />';
-                                } else {
-                                    // For Avatar badge
-                                    $output = '<img class="card-img-top" src="~/app-assets/images/avatars/pictureDefault.png" style="width:4em" />';
-                                }
-                                return $output;
-                            }
-                        },
-                        { 'data': 'fullName' },
-                        { 'data': 'duty' },
-                        { 'data': 'job' },
-                        { 'data': 'status' },
-                        {
-                            "render": function(data, type, full, meta) { return '<a class="btn btn-info" href="~/Panel/Jury/JuryEdit/' + full.juryId + '">Düzenle</a>'; }
-                        },
-                    ],
-                    columnDefs: [
-                        {
-                            className: 'control',
-                            orderable: false,
-                            targets: 0
-                        },
-                        {
-                            // Label
-                            targets: -2,
-                            render: function(data, type, full, meta) {
-                                var $status_number = full['status'];
-                                console.log($status_number);
-                                var $status = {
-                                    true: { title: 'Aktif', class: ' badge-light-success' },
-                                    false: { title: 'Pasif', class: ' badge-light-danger' }
-                                };
-                                if (typeof $status[$status_number] === 'undefined') {
-                                    return data;
-                                }
-                                return (
-                                    '<span class="badge badge-pill ' +
-                                    $status[$status_number].class +
-                                    '">' +
-                                    $status[$status_number].title +
-                                    '</span>'
-                                );
-                            }
-                        }
-                    ],
-                    dom:
-                        '<"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
-                    responsive: {
-                        details: {
-                            display: $.fn.dataTable.Responsive.display.modal({
-                                header: function(row) {
-                                    var data = row.data();
-                                    return ' Kişi Bilgileri';
-                                }
-                            }),
-                            type: 'column',
-                            renderer: $.fn.dataTable.Responsive.renderer.tableAll({
-                                tableClass: 'table'
-                            })
-                        }
-                    },
-                    language: {
-                        paginate: {
-                            // remove previous & next text from pagination
-                            previous: '&nbsp;',
-                            next: '&nbsp;'
-                        }
-                    }
-                });
-            $('.dataTables_filter .form-control').removeClass('form-control-sm');
-            $('.dataTables_length .custom-select').removeClass('custom-select-sm').removeClass('form-control-sm');
-        };
-
-    </script>
-    }
+  
+    

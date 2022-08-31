@@ -90,5 +90,25 @@ namespace UI.Controllers
             return BadRequest(result.Message);
 
         }
+
+        public async Task<IActionResult> OnPostLogOff()
+        {
+            try
+            {
+                // Setting.
+                var authenticationManager = Request.HttpContext;
+
+                // Sign Out.
+                await authenticationManager.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            }
+            catch (Exception ex)
+            {
+                // Info
+                throw ex;
+            }
+
+            // Info.
+            return this.RedirectToAction("Login", "Auth");
+        }
     }
 }

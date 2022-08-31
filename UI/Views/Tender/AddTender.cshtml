@@ -23,181 +23,205 @@
                     <div class="card-body">
                         <form class="form" method="post" asp-action="AddTender" enctype="multipart/form-data">
                             <div class="row">
-                                <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                <div class="col-xl-6 col-md-6 col-12 mb-1">
                                     <div class="form-group">
-                                        <label for="basicInput">İhale Türü</label>
-                                        <select class="select2 form-control form-control-lg" name="tags[]" asp-items="@ViewBag.TenderTypes">
+                                        <label for="basic input">İhale Türü</label>
+
+                                        <select class="select2 form-control form-control-lg" asp-for="TenderTypeId" asp-items="@ViewBag.TenderTypes">
                                         </select>
+
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                <div class="col-xl-6 col-md-6 col-12 mb-1">
                                     <div class="form-group">
                                         <label for="basicInput">İhale Prosedürü</label>
-                                        <input type="text" asp-for="TenderingProcedure" class="form-control" placeholder=" İhale Prosedürü" />
-@*                                        <span asp-validation-for="TenderingProcedure" class="text-danger"></span>
-*@                                    </div>
+                                        <input type="text" asp-for="TenderingProcedure" class="form-control" />
+                                        <span asp-validation-for="TenderingProcedure" class="text-danger"></span>
+                                    </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6 col-12 mb-1">
+                                <div class="col-xl-12 col-md-6 col-12 mb-1">
                                     <div class="form-group">
-                                        <label for="basicInput">İşin Adı</label>
-                                        <input type="text" asp-for="JobName" class="form-control" placeholder="İşin Adı" />
-                                        @*<span asp-validation-for="JobName" class="text-danger"></span>*@
-
+                                        <label for="basicInput"> İşin Adı </label>
+                                        <input type="text" asp-for="JobName" class="form-control"  />
+                                        <span asp-validation-for="JobName" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="basicInput"> Birim </label>
-                                        <select class="select2 form-control form-control-lg" name="tags[]" asp-items="@ViewBag.Units">
+                                        <select class="select2 form-control form-control-lg" asp-for="UnitId" asp-items="@ViewBag.Units">
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="basicInput">İhale Kayıt No</label>
-                                        <input type="text" class="form-control" asp-for="TenderRegisterNo" placeholder="İhale Kayıt No" />
+                                        <input type="text" class="form-control" asp-for="TenderRegisterNo" />
                                         @*<span asp-validation-for="TenderRegisterNo" class="text-danger"></span>*@
                                     </div>
                                 </div>
                                 <div class="col-xl-4 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="basicInput">İhale Tarihi</label>
-                                        <input type="text" asp-for="TenderDate" class="form-control date-mask" placeholder="DD-MM-YYYY" />
-                                        @*<span asp-validation-for="TenderDate" class="text-danger"></span>*@
+                                        <input type="text" asp-for="TenderDate" class="form-control date-mask" placeholder="2021-01-01" />
+                                        <span asp-validation-for="TenderDate" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6 col-12">
+                                <div class="col-xl-12 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="basicInput">İşin Türü ve Miktarı</label>
-                                        <input type="text" class="form-control" asp-for="JobTypeWorkLoad" placeholder="İşin Türü ve Miktarı" />
-                                        @*<span asp-validation-for="JobTypeWorkLoad" class="text-danger"></span>*@
+                                        <input type="text" class="form-control" asp-for="JobTypeWorkLoad" />
+                                        <span asp-validation-for="JobTypeWorkLoad" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6 col-12">
+
+
+                                <div class="col-xl-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="basicInput">Yaklaşık Maliyet</label>
-                                        <input type="text" class="intro form-control" asp-for="OpproximateCost">
-@*                                        <input type="text" class="form-control numeral-mask" asp-for="OpproximateCost" value="0.00" placeholder="İşin Türü ve Miktarı" />
-*@                                        @*<span asp-validation-for="JobTypeWorkLoad" class="text-danger"></span>*@
+                                        <input type="text" class="intro form-control" asp-for="OpproximateCost" placeholder="10.000">
+                                       <span asp-validation-for="JobTypeWorkLoad" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="basicInput">Diğer Kurumlarda Yapılmış Benzer İşlerin Sözleşme Tutarı</label>
+                                        <input type="text" class="form-control intro" asp-for="OtherFoundationContractPrice" placeholder="10,000" />
+                                        @*                                      <span asp-validation-for="OtherFoundationContractPrice" class="text-danger"></span>
+                                    *@
                                     </div>
                                 </div>
 
-                                <div class="col-xl-4 col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="basicInput"> Yapım işleri için yaklaşık maliyette kullanılan analizlerin oranı</label>
-                                        <input type="text" class="form-control" asp-for="AnalysisRate" placeholder="10%" />
-                                        @*<span asp-validation-for="AnalysisRate" class="text-danger"></span>*@
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="basicInput">Yaklaşık maliyette kullanılan resmi yayınlamış pozların oranı </label>
-                                        <input type="text" class="form-control" asp-for="PoseRate" placeholder="10%" />
-                                        <span asp-validation-for="PoseRate" class="text-danger"></span>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="basicInput">Yaklaşık maliyette kullanılan piyasa fiyat araştırmalarının oranı</label>
-                                        <input type="text" class="form-control" asp-for="MarketResearchRate" placeholder="10%" />
-                                    @*    <span asp-validation-for="MarketResearchRate" class="text-danger"></span>*@
-
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="basicInput">Bir önceki yaklaşık maliyet</label>
-                                        <input type="text" class="form-control intro" asp-for="PreviousOpproximateCoast" placeholder="10,000" />
-@*                                        <span asp-validation-for="PreviousOpproximateCoast" class="text-danger"></span>
-*@                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="basicInput">Bir önceki maliyet güncellenmiş tutar</label>
-                                        <input type="text" class="form-control intro" asp-for="PreviousOCTotal" placeholder="10,000" />
-@*                                        <span asp-validation-for="PreviousOCTotal" class="text-danger"></span>
-*@                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-md-6 col-12">
+                                <div class="col-xl-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="basicInput">Bir Önceki Sözleşme Bedeli</label>
                                         <input type="text" class="form-control intro" asp-for="PreviousConractPrice" placeholder="10,000" />
-                                                                                @*<span asp-validation-for="PreviousCPTotal" class="text-danger"></span>*@
+                                        @*<span asp-validation-for="PreviousCPTotal" class="text-danger"></span>*@
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6 col-12">
+                                <div class="col-xl-6 col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="basicInput"> Bir önceki sözleşme tutar </label>
+                                        <label for="basicInput"> Bir Önceki Sözleşme Bedeli Güncellenmiş Tutarı </label>
                                         <input type="text" class="form-control intro" asp-for="PreviousCPTotal" placeholder="10,000" />
                                         @*<span asp-validation-for="PreviousCPTotal" class="text-danger"></span>*@
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6 col-12">
+
+
+
+                                <div class="col-xl-6 col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="basicInput">Diğer kurumlarda yapılmış benzer işlerin sözleşme tutarı</label>
-                                        <input type="text" class="form-control intro" asp-for="OtherFoundationContractPrice" placeholder="10,000" />
-@*                                        <span asp-validation-for="OtherFoundationContractPrice" class="text-danger"></span>
-*@                                    </div>
+                                        <label for="basicInput">Bir Önceki Yaklaşık Maliyet</label>
+                                        <input type="text" class="form-control intro" asp-for="PreviousOpproximateCoast" placeholder="10,000" />
+                                        @*<span asp-validation-for="PreviousOpproximateCoast" class="text-danger"></span>*@
+                                    </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6 col-12">
+                                <div class="col-xl-6 col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label  for="basicInput">Bir Önceki Maliyet Güncellenmiş Tutar</label>
+                                        <input type="text" class="form-control intro" asp-for="PreviousOCTotal" placeholder="10,000" />
+                                        @*   <span asp-validation-for="PreviousOCTotal" class="text-danger"></span>  *@
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-xl-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="basicInput">İhale Sonrası Güncellenmiş Yaklaşık Maliyet</label>
                                         <input type="text" class="form-control intro" asp-for="OpproximateCostAfterTender" placeholder="10,000" />
-@*                                        <span asp-validation-for="OpproximateCostAfterTender" class="text-danger"></span>
-*@                                    </div>
+                                        @*<span asp-validation-for="OpproximateCostAfterTender" class="text-danger"></span> *@
+                                    </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6 col-12">
+                                <div class="col-xl-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="basicInput">Sözleşme Bedeli</label>
                                         <input type="text" class="form-control intro" asp-for="Contratprice" placeholder="10,000" />
-@*                                        <span asp-validation-for="Contratprice" class="text-danger"></span>
-*@                                    </div>
+                                        <span asp-validation-for="Contratprice" class="text-danger"></span>
+                                    </div>
                                 </div>
-        
-                                <div class="col-xl-4 col-md-6 col-12">
+
+                                @*ORANLAR*@
+
+
+                                <div class="col-xl-6 col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="basicInput"> Yapım İşleri İçin Yaklaşık Maliyette Kullanılan Analizlerin Oranı</label>
+                                        <input type="text" class="form-control" asp-for="AnalysisRate" placeholder="10%" />
+                                        @*<span asp-validation-for="AnalysisRate" class="text-danger"></span>*@
+                                    </div>
+                                </div>
+
+                                
+                                <div class="col-xl-6 col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="basicInput">Yaklaşık Maliyette Kullanılan Resmi Yayınlamış Pozların Oranı </label>
+                                        <input type="text" class="form-control" asp-for="PoseRate" placeholder="10%" />
+                                        <span asp-validation-for="PoseRate" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-6 col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="basicInput">Yaklaşık Maliyette Kullanılan Piyasa Fiyat Araştırmalarının Oranı</label>
+                                        <input type="text" class="form-control" asp-for="MarketResearchRate" placeholder="10%" />
+                                        <span asp-validation-for="MarketResearchRate" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="basicInput">Kırım Oranı</label>
                                         <input type="text" class="form-control" asp-for="KirimRate" placeholder="%10" />
-@*                                        <span asp-validation-for="KirimRate" class="text-danger"></span>
-*@                                    </div>
+                                        <span asp-validation-for="KirimRate" class="text-danger"></span>
+                                    </div>
                                 </div>
-                
-                                <div class="col-xl-4 col-md-6 col-12">
+                                  @*ORANLAR END*@
+
+                                <div class="col-xl-12 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="basicInput">İhale Katılan Firmalar ve Teklifleri</label>
-                                        <textarea data-length="320" class="form-control char-textarea active" asp-for="TendererProposal" rows="3" placeholder="Counter" style="color: rgb(78, 81, 84);"></textarea>
+                                        <textarea data-length="500" class="form-control char-textarea active" asp-for="TendererProposal" rows="3" placeholder="Bilgileri Giriniz.." style="color: rgb(78, 81, 84);"></textarea>
+                                        <span asp-validation-for="KirimRate" class="text-danger"></span>
+
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6 col-12">
+                                <div class="col-xl-12 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="basicInput">İhale Üzerinde Kalan Firmalar</label>
-                                        <textarea data-length="180" class="form-control char-textarea active" asp-for="EnthusiastFoundation" rows="2" placeholder="Counter" style="color: rgb(78, 81, 84);"></textarea>
+                                        <textarea data-length="500" class="form-control char-textarea active" asp-for="EnthusiastFoundation" rows="2" placeholder="Bilgileri Giriniz.." style="color: rgb(78, 81, 84);"></textarea>
+                                        <span asp-validation-for="KirimRate" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6 col-12">
+                                <div class="col-xl-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="basicInput">Puanlama</label>
-                                        <input type="text" class="form-control" asp-for="Scor" placeholder="Puanlama" />
+                                        <input type="text" class="form-control" asp-for="Scor" />
+                                        <span asp-validation-for="Scor" class="text-danger"></span>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6 col-12">
+                                <div class="col-xl-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="basicInput">Fiyat Farkı</label>
-                                        <input type="number" class="form-control" asp-for="PriceDifference" placeholder="Fiyat Farkı" />
+                                        <input type="text" class="form-control" asp-for="PriceDifference" />
+                                       @* <span asp-validation-for="PriceDifference" class="text-danger"></span>*@
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-md-6 col-12">
+                                <div class="col-xl-6 col-md-6 col-12">
                                     <div class="form-group">
-                                        <label for="basicInput">İhalenin Geldiği Tarih</label>
-                                        <input type="text" asp-for="TenderDateArrived" class="form-control date-mask" placeholder="DD-MM-YYYY" />
+                                       <label for="basicInput">İhalenin Geldiği Tarih</label>
+                                        <input type="text" asp-for="TenderDateArrived" class="form-control date-mask" placeholder="2021-01-01" />
+                                        <span asp-validation-for="TenderDateArrived" class="text-danger"></span>
                                     </div>
-                                    <div class="col-xl-4 col-md-6 col-12">
+                                    </div>
+                                    <div class="col-xl-12 col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="basicInput">İhale Durumu</label>
-                                            <textarea class="form-control" asp-for="TenderState" rows="3" placeholder="İhale Durumu"></textarea>
+                                            <textarea class="form-control" asp-for="TenderState" rows="2" placeholder="İhale Durumu"></textarea>
+                                            <span asp-validation-for="TenderState" class="text-danger"></span>
                                         </div>
                                     </div>
-
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-primary mr-1 waves-effect waves-float waves-light">Kaydet</button>
                                         <a asp-action="Index" asp-controller="Tender" class="btn btn-outline-secondary">İptal</a>
@@ -217,8 +241,8 @@
 
     <script src="~/app-assets/vendors/js/forms/select/select2.full.min.js"></script>
     <script src="~/app-assets/vendors/js/forms/cleave/cleave.min.js"></script>
-            <script type="text/javascript">
-        $('.row').find($(".intro")).each(function () {
+    <script type="text/javascript">
+        $('.row').find($(".intro")).each(function() {
             console.log("asdjkashd");
             new Cleave($(this), {
                 numeral: true,
@@ -227,9 +251,9 @@
                 delimiter: '.'
             });
         });
-        
+
     </script>
-  @*  <script src="~/app-assets/vendors/js/forms/cleave/addons/cleave-phone.us.js"></script>*@
+    @*  <script src="~/app-assets/vendors/js/forms/cleave/addons/cleave-phone.us.js"></script>*@
     }
     @section JsPageSpecification
     {

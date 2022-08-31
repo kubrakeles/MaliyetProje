@@ -40,7 +40,7 @@ namespace MaliyetBusiness.Concrete
 
         public IDataResult<Tender> GetById(int Id)
         {
-            return new SuccessDataResult<Tender>(_tenderDAL.Get(filter: p => p.Id == Id)) ;
+            return new SuccessDataResult<Tender>( _tenderDAL.Get(filter: p => p.Id == Id));
         }
 
         public IList<Tender> GetList()
@@ -63,7 +63,6 @@ namespace MaliyetBusiness.Concrete
             _tenderDAL.Update(tender);
             return new SuccessResult("İhale Başarı ile Güncellendi");
         }
-
 
     }
 }
