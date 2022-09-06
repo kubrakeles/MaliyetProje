@@ -23,6 +23,11 @@ builder.Services.AddDbContext<TenderContext>(options =>
     builder.Configuration.GetConnectionString("DefaultConnection"));
 
 });
+IConfiguration config = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.Production.json")
+    .AddEnvironmentVariables()
+    .Build();
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -80,8 +85,6 @@ builder.Services.AddSession(options =>
 //            IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
 //        };
 //    });
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

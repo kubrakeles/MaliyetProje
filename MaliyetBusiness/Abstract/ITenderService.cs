@@ -1,4 +1,5 @@
-﻿using MaliyetCore.Utilities.Results;
+﻿using MaliyetCore.Specification;
+using MaliyetCore.Utilities.Results;
 using MaliyetEntities;
 using System;
 using System.Collections.Generic;

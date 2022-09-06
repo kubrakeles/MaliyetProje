@@ -25,9 +25,9 @@ public decimal PreviousOpproximateCoast{ get; set; } //Bir önceki yaklaşık ma
 public decimal PreviousOCTotal { get; set; } //Bir önceki yaklaşık maliyet tutar 
 public decimal PreviousConractPrice { get; set; } //Bir önceki sözleşme bedeli
 public decimal PreviousCPTotal { get; set; }//Bir önceki sözleşme tutar
-public string? OtherFoundationContractPrice { get; set; }//Diğer kurumlarda yapılmış benzer işlerin söz. tutarı
+public decimal OtherFoundationContractPrice { get; set; }//Diğer kurumlarda yapılmış benzer işlerin söz. tutarı
 public decimal OpproximateCostAfterTender { get; set; } // ihale sonrası güncellenmiş yaklaşık maliyet
-public decimal Contratprice { get; set; } //Sözleşme Bedeli 
+public decimal Contratprice { get; set; } //Sözleşme Bedeli
 public string? KirimRate { get; set; } //Kırım Oranı
 public string? TendererProposal { get; set; } //İhale Katılımcısı ve teklifler
 public string? EnthusiastFoundation { get; set; } // ihale üzerinde kalan istekli firmalar

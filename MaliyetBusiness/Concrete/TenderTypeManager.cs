@@ -42,15 +42,15 @@ namespace MaliyetBusiness.Concrete
             return _tenderTypeDAL.GetList();
         }
 
-        public Unit GetUnit(int unitId)
-        {
-            return _tenderTypeDAL.GetUnitById(unitId);
-        }
+        //public Unit GetUnit(int unitId)
+        //{
+        //    return _tenderTypeDAL.GetUnitById(filter:p=>p.id == unitId);
+        //}
 
-        public IList<Unit> GetUnits()
-        {
-            return _tenderTypeDAL.GetUnits();
-        }
+        //public IList<Unit> GetUnits()
+        //{
+        //    return _tenderTypeDAL.GetUnits();
+        //}
 
         public IResult Update(TenderType tenderType)
         {

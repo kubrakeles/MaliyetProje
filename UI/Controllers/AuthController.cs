@@ -41,14 +41,13 @@ namespace UI.Controllers
                 }
                 var result = _authService.CreateAccessToken(userToLogin.Data);
                  if(result.Success)
-                {
+                 {
 
 
                         var claims = new List<Claim>
                         {
-                            new Claim(ClaimTypes.Email, userForLoginDto.Email)
-
-
+                            new Claim(ClaimTypes.Email, userForLoginDto.Email),
+                        
                         };
                         var claimsIdentity=new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme);
                         var authProperties = new AuthenticationProperties();

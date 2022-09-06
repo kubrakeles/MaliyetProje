@@ -18,7 +18,9 @@ $(function () {
     blockMask = $('.block-mask'),
     delimiterMask = $('.delimiter-mask'),
     customDelimiter = $('.custom-delimiter-mask'),
-    prefixMask = $('.prefix-mask');
+      prefixMask = $('.prefix-mask'),
+      dateMask1 = $('.date-mask-1');
+
 
   // Credit Card
   if (creditCard.length) {
@@ -42,9 +44,16 @@ $(function () {
     new Cleave(dateMask, {
       date: true,
       delimiter: '-',
-      datePattern: ['Y', 'm', 'd']
+      datePattern: ['d', 'm', 'Y']
     });
-  }
+    }
+    if (dateMask1.length) {
+        new Cleave(dateMask1, {
+            date: true,
+            delimiter: '-',
+            datePattern: ['d', 'm', 'Y']
+        });
+    }
 
   // Time
   if (timeMask.length) {

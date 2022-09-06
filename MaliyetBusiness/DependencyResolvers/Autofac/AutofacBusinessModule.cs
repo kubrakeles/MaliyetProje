@@ -33,7 +33,10 @@ namespace MaliyetBusiness.DependencyResolvers.Autofac
 
             builder.RegisterType<EFTenderTypeDAL>().As<ITenderTypeDAL>();
 
-           
+            builder.RegisterType<UnitManager>().As<IUnitService>();
+
+            builder.RegisterType<EFUnitDAL>().As<IUnitDAL>();
+
 
         }
     }

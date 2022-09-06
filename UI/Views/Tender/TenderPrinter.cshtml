@@ -1,0 +1,318 @@
+﻿@model TenderModel
+@{
+    Layout = null;
+}
+
+<html class="loading bordered-layout" lang="en" data-layout="bordered-layout" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
+
+    <title>@Model.JobName</title>
+    <link rel="apple-touch-icon" href="~/app-assets/images/icons/">
+    <link rel="shortcut icon" type="image/x-icon" href="~/app-assets/images/ico/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600" rel="stylesheet">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/vendors.min.css">
+    <!-- END: Vendor CSS-->
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/bootstrap-extended.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/colors.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/components.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/themes/dark-layout.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/themes/bordered-layout.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/themes/semi-dark-layout.css">
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/core/menu/menu-types/vertical-menu.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/css/pages/app-invoice-print.css">
+    <!-- END: Page CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="~/assets/css/style.css">
+    <!-- END: Custom CSS-->
+
+</head>
+<body class="vertical-layout vertical-menu-modern blank-page navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="blank-page">
+    <!-- BEGIN: Content-->
+    <div class="app-content content ">
+        <div class="content-overlay"></div>
+        
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <div class="invoice-print">
+                    <div class="d-flex justify-content-between flex-md-row flex-column pb-2">
+                        <div>
+                            <div class="d-flex mb-1">
+ 
+                                <img src="~/app-assets/images/logo/abbLogo.png" alt="logo">
+                                <h3 class="text-primary font-weight-bold ml-1">Maliyet Tespit Şube Müdürlüğü</h3>
+                            </div>
+                        </div>
+                        <div class="mt-md-0 mt-2 mb-50">
+                            <h4 class="font-weight-bold text-right mb-1">@Model.JobName</h4>
+                            <div class="invoice-date-wrapper">
+                                <span class="invoice-date-title">İhale Tarihi</span>
+                                <span class="font-weight-bold"> @Model.TenderDate.ToShortDateString()</span>
+                            </div>
+                              <div class="invoice-date-wrapper">
+                                                <p class="invoice-date-title ">İhalenin Geldiği Tarih:</p>
+                                                <p class="invoice-bold ">@Model.TenderDateArrived.ToShortDateString()</p>
+                                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive mt-2">
+                        <table class="table m-0">
+                            <thead>
+                                <tr>
+                                    <th >Başlık</th>
+                                    <th >Açıklaması</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td >
+                                        <p class="card-text font-weight-bold ">İhale Türü</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.TenderTypeName</span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">İhale Prosedürü</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.TenderingProcedure</span>
+                                    </td>
+
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">İşin Adı</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.JobName</span>
+                                    </td>
+
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">İlgili Daire Başkanlığı</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.UnitName</span>
+                                    </td>
+
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">İhale Kayıt No</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.TenderRegisterNo</span>
+                                    </td>
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">İşin Türü ve Miktarı</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.JobTypeWorkLoad.</span>
+                                    </td>
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">Yaklaşık Maliyet</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.OpproximateCost</span>
+                                    </td>
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold "> Yapım İşleri İçin Yaklaşık Maliyette Kullanılan Analizlerin Oranı</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.AnalysisRate</span>
+                                    </td>
+
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">Yapım İşleri İçin Yaklaşık Maliyette Kullanılan Resmi Pozların Oranı</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.PoseRate</span>
+                                    </td>
+
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">Yapım İşleri İçin Yaklaşık Maliyette Kullanılan Piyasa Fiyat Araştırmalarının Oranı</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.MarketResearchRate</span>
+                                    </td>
+
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">Bir Önceki Yaklaşık Maliyet ve Güncellenmiş Tutar</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.PreviousOpproximateCoast/@Model.PreviousOCTotal</span>
+                                    </td>
+
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">Bir Önceki Sözleşme Bedeli ve Güncellenmiş Tutar </p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.PreviousConractPrice/@Model.PreviousCPTotal</span>
+                                    </td>
+
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">İhale Sonrası Güncellenmiş Yaklaşık Maliyet</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.OpproximateCostAfterTender</span>
+                                    </td>
+
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">Diğer Kurumlarda Yapılmış Benzer İşlerin Sözleşme Tutarı</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.OtherFoundationContractPrice</span>
+                                    </td>
+
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">SÖZLEŞME BEDELİ</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.Contratprice</span>
+                                    </td>
+
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">Kırım Oranı</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">
+                                            % @Model.KirimRate
+                                        </span>
+                                    </td>
+
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">İhaleye Katılan Firmalar ve Teklifleri</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.TendererProposal</span>
+                                    </td>
+
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">İhale Üzerinde Kalan İstekli / İstekliler (İli)</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.EnthusiastFoundation (@Model.City)</span>
+                                    </td>
+
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td >
+                                        <p class="card-text font-weight-bold ">Puanlama</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.Scor</span>
+                                    </td>
+
+                                </tr>
+                                <tr class="border-bottom"> 
+                                    <td class="
+">
+                                        <p class="card-text font-weight-bold ">Fiyat Farkı</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.PriceDifference</span>
+                                    </td>
+                                </tr>
+                                <tr class="border-bottom">
+                                    <td class="">
+                                        <p class="card-text font-weight-bold ">Diğer Açıklamalar</p>
+                                    </td>
+                                    <td >
+                                        <span class="font-weight-bold">@Model.OtherExplanation</span>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    @*<div class="row">
+                        <div class="col-12">
+                            <span class="font-weight-bold">Note:</span>
+                            <span>
+                                It was a pleasure working with you and your team. We hope you will keep us in mind for future freelance
+                                projects. Thank You!
+                            </span>
+                        </div>
+                    </div>*@
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+    <!-- BEGIN: Vendor JS-->
+    <script src="~/app-assets/vendors/js/vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+    <!-- BEGIN: Page Vendor JS-->
+    <!-- END: Page Vendor JS-->
+    <!-- BEGIN: Theme JS-->
+    <script src="~/app-assets/js/core/app-menu.js"></script>
+    <script src="~/app-assets/js/core/app.js"></script>
+    <!-- END: Theme JS-->
+    <!-- BEGIN: Page JS-->
+    <script src="~/app-assets/js/scripts/pages/app-invoice-print.js"></script>
+    <!-- END: Page JS-->
+
+    <script>
+        $(window).on('load', function() {
+            if (feather) {
+                feather.replace({
+                    width: 14,
+                    height: 14
+                });
+            }
+        })
+    </script>
+</body>
+<!-- END: Body-->
+<!-- END: Body-->
+
+</html>

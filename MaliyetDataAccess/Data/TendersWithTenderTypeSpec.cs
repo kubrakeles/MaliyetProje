@@ -15,7 +15,14 @@ namespace MaliyetDataAccess.Data
         public TendersWithTenderTypeSpec()
         {
             AddInclude(x => x.TenderTypeId);
-            AddInclude(x => x.UnitId);
+            //AddInclude(x => x.UnitId);
         }
+        public TendersWithTenderTypeSpec(int id)
+            :base(x=>x.Id==id)
+        {
+            AddInclude(x => x.TenderTypeId);
+           // AddInclude(x => x.UnitId);
+        }
+
     }
 }

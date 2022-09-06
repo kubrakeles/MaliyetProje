@@ -17,8 +17,8 @@ namespace MaliyetBusiness.Abstract
         IResult Update(TenderType tenderType);
         IResult Delete(TenderType tenderType);
 
-        IList<Unit> GetUnits();
-       Unit GetUnit(int unitId);
+       // IList<Unit> GetUnits();
+       //Unit GetUnit(int unitId);
       
     }
 }

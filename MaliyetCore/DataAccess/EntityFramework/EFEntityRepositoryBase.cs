@@ -40,7 +40,7 @@ namespace MaliyetCore.DataAccess.EntityFramework
             }
         }
 
-        public IList<Tentity> GetList(Expression<Func<Tentity, bool>> filter = null)
+        public IList<Tentity> GetList(Expression<Func<Tentity, bool>> filter=null)
         {
             using (var context = new TContext())
             {
