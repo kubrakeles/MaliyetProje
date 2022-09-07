@@ -23,10 +23,10 @@ builder.Services.AddDbContext<TenderContext>(options =>
     builder.Configuration.GetConnectionString("DefaultConnection"));
 
 });
-IConfiguration config = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.Production.json")
-    .AddEnvironmentVariables()
-    .Build();
+//IConfiguration config = new ConfigurationBuilder()
+//    .AddJsonFile("appsettings.Production.json")
+//    .AddEnvironmentVariables()
+//    .Build();
 
 
 // Add services to the container.
