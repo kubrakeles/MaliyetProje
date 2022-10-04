@@ -1,4 +1,6 @@
 ﻿using MaliyetBusiness.Abstract;
+//using MaliyetCore.Aspects.Autofac.Logging;
+using MaliyetCore.CrossCuttingConcerns.Logging.Log4Net.Loggers;
 using MaliyetCore.Utilities.Results;
 using MaliyetDataAccess.Abstract;
 using MaliyetDataAccess.Concrete.EntityFramework;
@@ -19,6 +21,7 @@ namespace MaliyetBusiness.Concrete
         {
             _tenderDAL = tenderDAL; 
         }
+       
         public IResult Add(Tender tender)
         {
             _tenderDAL.Add(tender);
@@ -42,7 +45,7 @@ namespace MaliyetBusiness.Concrete
         {
             return new SuccessDataResult<Tender>( _tenderDAL.Get(filter: p => p.Id == Id));
         }
-
+        //[LogAspect(typeof(DatabaseLogger))]
         public IList<Tender> GetList()
         {
             return _tenderDAL.GetList().ToList();

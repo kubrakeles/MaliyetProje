@@ -17,7 +17,5 @@ namespace MaliyetBusiness.Abstract
         IDataResult<AccessToken> CreateAccessToken(User user);
         IResult UserExists(string email);
 
-
-
     }
 }

@@ -23,7 +23,7 @@
                     <div class="card-body">
                         <form class="form" method="post" asp-action="AddTender" enctype="multipart/form-data">
                              <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                    @if (ViewBag.success == "true")
+                                    @if (ViewBag.success == true)
                                     {
                                         <div class="alert alert-solid-success alert-bold fade show kt-margin-t-20 kt-margin-b-40" role="alert">
                                             <div class="alert-icon"><i class="fa fa-check"></i></div>
@@ -35,7 +35,7 @@
                                             </div>
                                         </div>
                                     }
-                                    @if (ViewBag.success == "false")
+                                    @if (ViewBag.success == false)
                                     {
                                         <div class="alert alert-solid-warning alert-bold fade show kt-margin-t-20 kt-margin-b-40" role="alert">
                                             <div class="alert-icon"><i class="fa fa-check"></i></div>
@@ -88,7 +88,7 @@
                                 <div class="col-xl-4 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="basicInput">İhale Tarihi</label>
-                                        <input type="text" asp-for="TenderDate" class="form-control date-mask" placeholder="2021-01-01" />
+                                        <input type="text" asp-for="TenderDate" class="form-control date-mask" placeholder="01-01-2022" />
                                         <span asp-validation-for="TenderDate" class="text-danger"></span>
                                     </div>
 
@@ -217,15 +217,15 @@
                                     <div class="form-group">
                                         <label for="basicInput">İhale Üzerinde Kalan Firmalar</label>
                                         <textarea data-length="500" class="form-control char-textarea active" asp-for="EnthusiastFoundation" rows="2" placeholder="Bilgileri Giriniz.." style="color: rgb(78, 81, 84);"></textarea>
-                                        <span asp-validation-for="KirimRate" class="text-danger"></span>
-                                    </div>
+@*                                        <span asp-validation-for="KirimRate" class="text-danger"></span>
+*@                                    </div>
                                 </div>
                                 <div class="col-xl-6 col-md-6 col-12">
                                     <div class="form-group">
                                         <label for="basicInput">Puanlama</label>
                                         <input type="text" class="form-control" asp-for="Scor" />
-                                        <span asp-validation-for="Scor" class="text-danger"></span>
-                                    </div>
+@*                                        <span asp-validation-for="Scor" class="text-danger"></span>
+*@                                    </div>
                                 </div>
                                 <div class="col-xl-6 col-md-6 col-12">
                                     <div class="form-group">
@@ -237,7 +237,7 @@
                                 <div class="col-xl-6 col-md-6 col-12">
                                     <div class="form-group">
                                        <label for="basicInput">İhalenin Geldiği Tarih</label>
-                                        <input type="text"  class="form-control date-mask-1" asp-for="TenderDateArrived" placeholder="2021-01-01" />
+                                        <input type="text"  class="form-control date-mask-1" asp-for="TenderDateArrived" placeholder="01-01-2022" />
                                         <span asp-validation-for="TenderDateArrived" class="text-danger"></span>
                                     </div>
                                     </div>
@@ -245,8 +245,8 @@
                                         <div class="form-group">
                                             <label for="basicInput">İhale Durumu</label>
                                             <textarea class="form-control" asp-for="TenderState" rows="2" placeholder="İhale Durumu"></textarea>
-                                            <span asp-validation-for="TenderState" class="text-danger"></span>
-                                        </div>
+@*                                            <span asp-validation-for="TenderState" class="text-danger"></span>
+*@                                        </div>
                                     </div>
                                      <div class="col-xl-12 col-md-6 col-12">
                                         <div class="form-group">
@@ -258,7 +258,7 @@
                                         <button type="submit" class="btn btn-primary mr-1 waves-effect waves-float waves-light">Kaydet</button>
                                         <a asp-action="Index" asp-controller="Tender" class="btn btn-outline-secondary">İptal</a>
                                     </div>
-                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

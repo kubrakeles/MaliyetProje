@@ -15,6 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacBusinessModule()));
+builder.WebHost.UseIIS();
 
 // Add services to the container.
 builder.Services.AddDbContext<TenderContext>(options =>
@@ -27,8 +28,6 @@ builder.Services.AddDbContext<TenderContext>(options =>
 //    .AddJsonFile("appsettings.Production.json")
 //    .AddEnvironmentVariables()
 //    .Build();
-
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();

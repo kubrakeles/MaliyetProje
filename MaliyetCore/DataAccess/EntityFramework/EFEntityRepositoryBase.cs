@@ -3,6 +3,7 @@ using MaliyetCore.Entities;
 using MaliyetCore.Specification;
 using Microsoft.EntityFrameworkCore;
 using MaliyetDataAccess.Data;
+using System.Data.Entity.Validation;
 
 namespace MaliyetCore.DataAccess.EntityFramework
 {
@@ -13,20 +14,25 @@ namespace MaliyetCore.DataAccess.EntityFramework
     {
         public void Add(Tentity entity)
         {
+
             using (TContext context = new TContext())
             {
                 var addedEntity = context.Entry(entity);
+
                 addedEntity.State = EntityState.Added;
                 context.SaveChanges();
             }
+
+
         }
 
         public void Delete(Tentity Entity)
         {
+            //ISDeleted=1 yapýlacak guncelleme olarak.
             using (TContext context = new TContext())
             {
                 var deletedEntity = context.Entry(Entity);
-                deletedEntity.State = EntityState.Deleted;
+                deletedEntity.State = EntityState.Modified;
                 context.SaveChanges();
             }
         }

@@ -36,10 +36,14 @@ public string? Scor { get; set; } // puanlama
 public string? PriceDifference { get; set; } //Fiyat Farkı
 public string? OtherExplanation { get; set; } //Diğer Açıklama
 public DateTime TenderDateArrived { get; set; } //İhalenin geldiği tarih
- public string? TenderTypeName { get; set; } //İhale Usülü
-public string? TenderState { get; set; } // ihale durumu
-
-
+public string? TenderTypeName { get; set; } //İhale Usülü
+public string? TenderState { get; set; }
+public int IsDeleted { get; set; } //Silindi Silinmedi
+        public DateTime? CreatedDate { get; set; }
+        public DateTime ?UpdateDate { get; set; }
+        public string? CreatedEmail { get; set; }
+        public string? UpdatedEmail { get; set; }
+        // ihale durumu
     }
 
 }

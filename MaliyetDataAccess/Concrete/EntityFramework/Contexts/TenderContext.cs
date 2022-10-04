@@ -30,7 +30,7 @@ public class TenderContext:DbContext
             .AddJsonFile("appsettings.json")
             .Build();
 
-        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        var connectionString = configuration.GetConnectionString("ConnectionContext");
         optionsBuilder.UseSqlServer(connectionString);
     }
 
@@ -41,6 +41,7 @@ public class TenderContext:DbContext
     public DbSet<OperationClaim> OperationClaim { get; set; }
     public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
+    public DbSet<Logs> Logs { get; set; }
 
 
 

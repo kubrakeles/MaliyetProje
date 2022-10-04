@@ -2,6 +2,7 @@
 using MaliyetEntities.Dto;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using UI.Models;
@@ -42,14 +43,13 @@ namespace UI.Controllers
                 var result = _authService.CreateAccessToken(userToLogin.Data);
                  if(result.Success)
                  {
-
-
                         var claims = new List<Claim>
                         {
                             new Claim(ClaimTypes.Email, userForLoginDto.Email),
                         
                         };
                         var claimsIdentity=new ClaimsIdentity(claims,CookieAuthenticationDefaults.AuthenticationScheme);
+                        var principal = new ClaimsPrincipal(claimsIdentity);
                         var authProperties = new AuthenticationProperties();
 
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal
@@ -65,14 +65,23 @@ namespace UI.Controllers
             return this.RedirectToPage("/Tender/Index");
         }
 
+        //public async Task<IActionResult> ChangePassword()
+        //{
+
+
+
+        //}
+
+
 
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
-
+       
         [HttpPost]
+        [Authorize]
         public IActionResult Register(UserForRegisterDto userForRegisterDto) 
         {
             var userExists = _authService.UserExists(userForRegisterDto.Email);
@@ -96,7 +105,6 @@ namespace UI.Controllers
             {
                 // Setting.
                 var authenticationManager = Request.HttpContext;
-
                 // Sign Out.
                 await authenticationManager.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             }

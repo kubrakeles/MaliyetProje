@@ -1,4 +1,5 @@
 ﻿using MaliyetBusiness.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using UI.Models;
@@ -7,6 +8,7 @@ namespace UI.Controllers
 {
     public class HomeController : Controller
     {
+       // [Authorize]
         private IAuthService authService;
         private readonly ILogger<HomeController> _logger;
 

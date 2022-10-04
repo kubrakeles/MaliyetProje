@@ -12,6 +12,9 @@ namespace MaliyetEntities.Concrete
         public int Id { get; set; }
         public string TypeName { get; set; }
         public ICollection<Tender> Tenders { get; set; }
-
+        public DateTime? CreatedDate { get ; set ; }
+        public DateTime ?UpdateDate { get ; set ; }
+        public string ?CreatedEmail { get ; set ; }
+        public string ?UpdatedEmail { get ; set ; }
     }
 }

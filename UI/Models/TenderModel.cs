@@ -30,7 +30,8 @@
         public string OtherExplanation { get; set; } //Diğer Açıklama
         public DateTime TenderDateArrived { get; set; } //İhalenin geldiği tarih
         public string TenderState { get; set; } // ihale durumu
-        public string  UnitName { get; set; } //Birim Adı
+        public string UnitName { get; set; } //Birim Adı
         public string TenderTypeName { get; set; } //Tip Adı
+        public string Email { get; set; }
     }
 }

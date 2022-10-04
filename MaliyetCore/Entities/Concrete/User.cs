@@ -16,6 +16,9 @@ namespace MaliyetCore.Entities.Concrete
         public byte[] PasswordSalt { get; set; }
         public byte[] PasswordHash { get; set; }
         public bool Status { get; set; }
-
+        //public DateTime? CreatedDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        //public DateTime? UpdateDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        //public string? CreatedEmail { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        //public string? UpdatedEmail { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }

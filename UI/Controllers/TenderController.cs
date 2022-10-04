@@ -4,7 +4,10 @@ using MaliyetEntities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using System.Data.Entity.Validation;
 using System.Globalization;
+using System.Text;
 using UI.Models;
 
 namespace UI.Controllers
@@ -15,14 +18,14 @@ namespace UI.Controllers
         ITenderService _tenderService;
         ITenderTypeService _tenderTypeService;
         IUnitService _unitService;
+        IUserService _userService;
 
-
-        public TenderController(ITenderService tenderService, ITenderTypeService tenderTypeService, IUnitService unitService)
+        public TenderController(ITenderService tenderService, ITenderTypeService tenderTypeService, IUnitService unitService, IUserService userService)
         {
             _tenderService = tenderService;
             _tenderTypeService = tenderTypeService;
             _unitService = unitService;
-
+            _userService = userService;
         }
         [Authorize]
         [HttpGet]
@@ -105,32 +108,39 @@ namespace UI.Controllers
                 Obj.TenderRegisterNo = model.TenderRegisterNo;
                 Obj.TenderDate = model.TenderDate;
                 Obj.JobTypeWorkLoad = model.JobTypeWorkLoad;
-                Obj.OpproximateCost = Cevir(model.OpproximateCost);
+                Obj.OpproximateCost = Convert.ToDecimal(model.OpproximateCost);
                 Obj.AnalysisRate = model.AnalysisRate;
                 Obj.PoseRate = model.PoseRate;
                 Obj.MarketResearchRate = model.MarketResearchRate;
-                Obj.PreviousOpproximateCoast = Cevir(model.PreviousOpproximateCoast);
-                Obj.PreviousOCTotal = Cevir(model.PreviousOCTotal);
-                Obj.PreviousConractPrice = Cevir(model.PreviousConractPrice);
-                Obj.PreviousCPTotal = Cevir(model.PreviousCPTotal);
-                Obj.OtherFoundationContractPrice = Cevir(model.OtherFoundationContractPrice);
-                Obj.OpproximateCostAfterTender = Cevir(model.OpproximateCostAfterTender);
-                Obj.Contratprice = Cevir(model.Contratprice);
+                Obj.PreviousOpproximateCoast = Convert.ToDecimal(model.PreviousOpproximateCoast);
+                Obj.PreviousOCTotal = Convert.ToDecimal(model.PreviousOCTotal);
+                Obj.PreviousConractPrice = Convert.ToDecimal(model.PreviousConractPrice);
+                Obj.PreviousCPTotal = Convert.ToDecimal(model.PreviousCPTotal);
+                Obj.OtherFoundationContractPrice = Convert.ToDecimal(model.OtherFoundationContractPrice);
+                Obj.OpproximateCostAfterTender = Convert.ToDecimal(model.OpproximateCostAfterTender);
+                Obj.Contratprice = Convert.ToDecimal(model.Contratprice);
                 Obj.KirimRate = model.KirimRate;
                 Obj.TendererProposal = model.TendererProposal;
                 Obj.EnthusiastFoundation = model.EnthusiastFoundation;
-                Obj.City = model.City;
+                Obj.City = "Adana";
+                Obj.TenderTypeName = "";
+                Obj.UpdatedEmail = "";
+                Obj.UpdateDate = DateTime.Now;
                 Obj.Scor = model.Scor;
                 Obj.TenderTypeId = model.TenderTypeId;
                 Obj.PriceDifference = model.PriceDifference;
                 Obj.OtherExplanation = model.OtherExplanation;
                 Obj.TenderDateArrived = model.TenderDateArrived;
                 Obj.TenderState = model.TenderState;
-                var a= _tenderService.Add(Obj);
+                Obj.CreatedDate = DateTime.Now;
+                Obj.IsDeleted = 0;
+                Obj.CreatedEmail = User.Claims.FirstOrDefault().Value;
+
+                var a = _tenderService.Add(Obj);
                 if (a != null)
                 {
                     ViewBag.success = true;
-                    return RedirectToAction("AddTender", "Tender");
+                    return RedirectToAction("Index", "Tender");
                 }
                 else
                 {
@@ -139,18 +149,20 @@ namespace UI.Controllers
                     ViewBag.HataMesaji = "İşlem Başarısız Oldu !";
                     return View(model);
 
-
                 }
-                
             }
             catch (Exception ex)
-            { 
-
+            {
+               
+                BagliVeriler();
+                ViewBag.success = false;
+                ViewBag.HataMesaji = "İşlem Başarısız Oldu !";
+                return View(model);
             }
             return View(model); //RedirectToAction("AddTender", "Tender");
         }
         private Decimal Cevir(string a)
-        {
+        { /*if (a == null) return 0;*/
             return Convert.ToDecimal(string.Format("{0:0.00}", a.Replace(".", "")).ToString().Replace(",", "."));
         }
         [Authorize]
@@ -190,10 +202,9 @@ namespace UI.Controllers
             model.TenderState = TenderByGet.Data.TenderState;
             model.UnitName = UnitName;
             model.TenderTypeName = TenderTypeName;
-            model.PreviousConractPrice = TenderByGet.Data.PreviousConractPrice.ToString("C", CultureInfo.CurrentCulture) ;
+            model.PreviousConractPrice = TenderByGet.Data.PreviousConractPrice.ToString("C", CultureInfo.CurrentCulture);
             return View(model);
         }
-
         [Authorize]
         [HttpGet]
         public IActionResult TenderPrinter(int id)
@@ -216,8 +227,8 @@ namespace UI.Controllers
             model.PoseRate = TenderByGet.Data.PoseRate;
             model.MarketResearchRate = TenderByGet.Data.MarketResearchRate;
             model.PreviousOpproximateCoast = TenderByGet.Data.PreviousOpproximateCoast.ToString("C", CultureInfo.CurrentCulture);
-            model.PreviousOCTotal = TenderByGet.Data.PreviousOCTotal.ToString("C", CultureInfo.CurrentCulture) ;
-            model.PreviousCPTotal = TenderByGet.Data.PreviousCPTotal.ToString("C", CultureInfo.CurrentCulture) ;
+            model.PreviousOCTotal = TenderByGet.Data.PreviousOCTotal.ToString("C", CultureInfo.CurrentCulture);
+            model.PreviousCPTotal = TenderByGet.Data.PreviousCPTotal.ToString("C", CultureInfo.CurrentCulture);
             model.OtherFoundationContractPrice = TenderByGet.Data.OtherFoundationContractPrice.ToString("C", CultureInfo.CurrentCulture) ;
             model.OpproximateCostAfterTender = TenderByGet.Data.OpproximateCostAfterTender.ToString("C", CultureInfo.CurrentCulture) ;
             model.KirimRate = TenderByGet.Data.KirimRate;
@@ -269,7 +280,7 @@ namespace UI.Controllers
             model.PriceDifference = TenderByGet.Data.PriceDifference;
             model.OtherExplanation = TenderByGet.Data.OtherExplanation;
             model.TenderDateArrived = TenderByGet.Data.TenderDateArrived;
-            model.TenderState = TenderByGet.Data.TenderState;
+            model.TenderState = TenderByGet.Data.TenderState;            
             model.UnitName = UnitName;
             model.TenderTypeName = TenderTypeName;
             model.PreviousConractPrice = TenderByGet.Data.PreviousConractPrice.ToString("C", CultureInfo.CurrentCulture) ;
@@ -284,24 +295,23 @@ namespace UI.Controllers
           
                 if(updatedObj != null)
                 {
-
                     updatedObj.TenderingProcedure = model.TenderingProcedure;
                     updatedObj.JobName = model.JobName;
                     updatedObj.UnitId = model.UnitId;
                     updatedObj.TenderRegisterNo = model.TenderRegisterNo;
                     updatedObj.TenderDate = model.TenderDate;
                     updatedObj.JobTypeWorkLoad = model.JobTypeWorkLoad;
-                    updatedObj.OpproximateCost = Cevir(model.OpproximateCost);
+                    updatedObj.OpproximateCost =Convert.ToDecimal(model.OpproximateCost);
                     updatedObj.AnalysisRate = model.AnalysisRate;
                     updatedObj.PoseRate = model.PoseRate;
                     updatedObj.MarketResearchRate = model.MarketResearchRate;
-                    updatedObj.PreviousOpproximateCoast = Cevir(model.PreviousOpproximateCoast);
-                    updatedObj.PreviousOCTotal = Cevir(model.PreviousOCTotal);
-                    updatedObj.PreviousConractPrice = Cevir(model.PreviousConractPrice);
-                    updatedObj.PreviousCPTotal = Cevir(model.PreviousCPTotal);
-                    updatedObj.OtherFoundationContractPrice = Cevir(model.OtherFoundationContractPrice);
-                    updatedObj.OpproximateCostAfterTender = Cevir(model.OpproximateCostAfterTender);
-                    updatedObj.Contratprice = Cevir(model.Contratprice);
+                    updatedObj.PreviousOpproximateCoast = Convert.ToDecimal(model.PreviousOpproximateCoast);
+                    updatedObj.PreviousOCTotal = Convert.ToDecimal(model.PreviousOCTotal);
+                    updatedObj.PreviousConractPrice = Convert.ToDecimal(model.PreviousConractPrice);
+                    updatedObj.PreviousCPTotal = Convert.ToDecimal(model.PreviousCPTotal);
+                    updatedObj.OtherFoundationContractPrice = Convert.ToDecimal(model.OtherFoundationContractPrice);
+                    updatedObj.OpproximateCostAfterTender = Convert.ToDecimal(model.OpproximateCostAfterTender);
+                    updatedObj.Contratprice = Convert.ToDecimal(model.Contratprice);
                     updatedObj.KirimRate = model.KirimRate;
                     updatedObj.TendererProposal = model.TendererProposal;
                     updatedObj.EnthusiastFoundation = model.EnthusiastFoundation;
@@ -312,6 +322,8 @@ namespace UI.Controllers
                     updatedObj.OtherExplanation = model.OtherExplanation;
                     updatedObj.TenderDateArrived = model.TenderDateArrived;
                     updatedObj.TenderState = model.TenderState;
+                    updatedObj.UpdateDate = DateTime.Now;
+                    updatedObj.UpdatedEmail = User.Claims.FirstOrDefault().Value;
                    var a= _tenderService.Update(updatedObj);
 
 

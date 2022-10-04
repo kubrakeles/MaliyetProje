@@ -94,6 +94,34 @@ namespace MaliyetDataAccess.Migrations
                     b.ToTable("UserOperationClaims");
                 });
 
+            modelBuilder.Entity("MaliyetEntities.Concrete.Logs", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<string>("Audit")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Details")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Logs");
+                });
+
             modelBuilder.Entity("MaliyetEntities.Concrete.TenderType", b =>
                 {
                     b.Property<int>("Id")
@@ -102,8 +130,20 @@ namespace MaliyetDataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedEmail")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("TypeName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedEmail")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -119,8 +159,20 @@ namespace MaliyetDataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedEmail")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UnitName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedEmail")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
@@ -145,8 +197,17 @@ namespace MaliyetDataAccess.Migrations
                     b.Property<decimal>("Contratprice")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedEmail")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("EnthusiastFoundation")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IsDeleted")
+                        .HasColumnType("int");
 
                     b.Property<string>("JobName")
                         .HasColumnType("nvarchar(max)");
@@ -219,6 +280,12 @@ namespace MaliyetDataAccess.Migrations
 
                     b.Property<int>("UnitId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedEmail")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
