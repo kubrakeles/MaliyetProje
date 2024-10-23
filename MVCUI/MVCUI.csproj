@@ -183,9 +183,9 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MaliyetBusiness\MaliyetBusiness.csproj">
+    <ProjectReference Include="..\BelediyeBusiness\BelediyeBusiness.csproj">
       <Project>{77da8e7e-eefa-4311-8035-411504c770bf}</Project>
-      <Name>MaliyetBusiness</Name>
+      <Name>BelediyeBusiness</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

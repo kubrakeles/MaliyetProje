@@ -9,7 +9,7 @@
       "UI/1.0.0": {
         "dependencies": {
           "EntityFramework": "6.4.4",
-          "MaliyetBusiness": "1.0.0",
+          "BelediyeBusiness": "1.0.0",
           "MicroKnights.Log4NetAdoNetAppender": "2.2.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.8",
           "Microsoft.EntityFrameworkCore.Design": "6.0.6",
@@ -2422,16 +2422,16 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
-      "MaliyetBusiness/1.0.0": {
+      "BelediyeBusiness/1.0.0": {
         "dependencies": {
           "Autofac": "6.4.0",
-          "MaliyetDataAccess": "1.0.0"
+          "BelediyeDataAccess": "1.0.0"
         },
         "runtime": {
-          "MaliyetBusiness.dll": {}
+          "BelediyeBusiness.dll": {}
         }
       },
-      "MaliyetCore/1.0.0": {
+      "BelediyeCore/1.0.0": {
         "dependencies": {
           "Autofac.Extensions.DependencyInjection": "8.0.0",
           "EntityFramework": "6.4.4",
@@ -2445,27 +2445,27 @@
           "log4net": "2.0.15"
         },
         "runtime": {
-          "MaliyetCore.dll": {}
+          "BelediyeCore.dll": {}
         }
       },
-      "MaliyetDataAccess/1.0.0": {
+      "BelediyeDataAccess/1.0.0": {
         "dependencies": {
-          "MaliyetCore": "1.0.0",
-          "MaliyetEntities": "1.0.0",
+          "BelediyeCore": "1.0.0",
+          "BelediyeEntities": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.6",
           "Microsoft.Extensions.Configuration.Json": "6.0.0"
         },
         "runtime": {
-          "MaliyetDataAccess.dll": {}
+          "BelediyeDataAccess.dll": {}
         }
       },
-      "MaliyetEntities/1.0.0": {
+      "BelediyeEntities/1.0.0": {
         "dependencies": {
-          "MaliyetCore": "1.0.0"
+          "BelediyeCore": "1.0.0"
         },
         "runtime": {
-          "MaliyetEntities.dll": {}
+          "BelediyeEntities.dll": {}
         }
       }
     }
@@ -3827,22 +3827,22 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
-    "MaliyetBusiness/1.0.0": {
+    "BelediyeBusiness/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "MaliyetCore/1.0.0": {
+    "BelediyeCore/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "MaliyetDataAccess/1.0.0": {
+    "BelediyeDataAccess/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "MaliyetEntities/1.0.0": {
+    "BelediyeEntities/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

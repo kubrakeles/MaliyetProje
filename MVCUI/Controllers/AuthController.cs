@@ -1,8 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using BelediyeBusiness.Abstract;
+using BelediyeEntities.Dto;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using UI.Models;
 
 
 namespace MVCUI.Controllers
@@ -15,7 +18,7 @@ namespace MVCUI.Controllers
             _authService = authService;
         }
         
-
+        [HttpGet]
         public ActionResult Index()
         {
             return View();

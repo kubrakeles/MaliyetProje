@@ -1,9 +1,9 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using MaliyetBusiness.DependencyResolvers.Autofac;
-using MaliyetCore.Utilities.Security.Encryption;
-using MaliyetCore.Utilities.Security.Jwt;
-using MaliyetDataAccess.Concrete.EntityFramework.Contexts;
+using BelediyeBusiness.DependencyResolvers.Autofac;
+using BelediyeCore.Utilities.Security.Encryption;
+using BelediyeCore.Utilities.Security.Jwt;
+using BelediyeDataAccess.Concrete.EntityFramework.Contexts;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Routing;

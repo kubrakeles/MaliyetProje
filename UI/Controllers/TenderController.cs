@@ -1,6 +1,6 @@
-﻿using MaliyetBusiness.Abstract;
-using MaliyetDataAccess.Data;
-using MaliyetEntities;
+﻿using BelediyeBusiness.Abstract;
+using BelediyeDataAccess.Data;
+using BelediyeEntities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;

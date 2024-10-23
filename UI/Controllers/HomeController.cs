@@ -1,4 +1,4 @@
-﻿using MaliyetBusiness.Abstract;
+﻿using BelediyeBusiness.Abstract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;

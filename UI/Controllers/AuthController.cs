@@ -1,5 +1,5 @@
-﻿using MaliyetBusiness.Abstract;
-using MaliyetEntities.Dto;
+﻿using BelediyeBusiness.Abstract;
+using BelediyeEntities.Dto;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
