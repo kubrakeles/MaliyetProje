@@ -13,7 +13,8 @@ public string title {get;set;}
 
 public string Text { get; set; }
 public int userID  { get; set; }
+public string ? ImagePath{get; set;}
 
-public DateTime? CreatedDate { get; set; }
+public DateTime CreatedDate { get; set; }
 }
 }

@@ -35,7 +35,13 @@ namespace BelediyeBusiness.DependencyResolvers.Autofac
 
             builder.RegisterType<UnitManager>().As<IUnitService>();
 
-            builder.RegisterType<EFUnitDAL>().As<IUnitDAL>();
+            builder.RegisterType<EFUnitDAL>().As<IUnitDAL>(); 
+
+    builder.RegisterType<NotificationManager>().As<INotificationService>();
+    
+            builder.RegisterType<EFNotificationDAL>().As<INotificationDAL>();
+
+        
 
 
         }

@@ -135,6 +135,7 @@ namespace UI.Controllers
                 Obj.CreatedDate = DateTime.Now;
                 Obj.IsDeleted = 0;
                 Obj.CreatedEmail = User.Claims.FirstOrDefault().Value;
+                
 
                 var a = _tenderService.Add(Obj);
                 if (a != null)

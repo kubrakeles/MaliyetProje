@@ -12,17 +12,17 @@ using System.Threading.Tasks;
 
 namespace BelediyeDataAccess.Concrete.EntityFramework
 {
-    public class EFUserDAL : EFEntityRepositoryBase<User, TenderContext>, IUserDAL
+    public class EFUserDAL : EFEntityRepositoryBase<User, NotificationContext>, IUserDAL
     {
-        private readonly TenderContext _tenderContext;
-        public EFUserDAL(TenderContext tenderContext)
+        private readonly NotificationContext _notificationContext;
+        public EFUserDAL(NotificationContext notificationContext)
         {
-            _tenderContext = tenderContext;
+            _notificationContext = notificationContext;
         }
 
         public List<OperationClaim> GetClaims(User user)
         {
-            using (var context = _tenderContext)
+            using (var context = _notificationContext)
             {
                 var result = from OperationClaim in context.OperationClaim
                              join UserOperationClaim in context.UserOperationClaims

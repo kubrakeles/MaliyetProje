@@ -53,7 +53,7 @@ public class AuthController:Controller{
 
                         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal
                             (claimsIdentity), authProperties);
-                        return RedirectToAction("index", "Tender");
+                        return RedirectToAction("index", "Notification");
                  }
                 }
             }
@@ -67,11 +67,7 @@ public class AuthController:Controller{
         //public async Task<IActionResult> ChangePassword()
         //{
 
-
-
         //}
-
-
 
         [HttpGet]
         public IActionResult Register()
@@ -80,7 +76,7 @@ public class AuthController:Controller{
         }
        
         [HttpPost]
-        [Authorize]
+       // [Authorize]
         public IActionResult Register(UserForRegisterDto userForRegisterDto) 
         {
             var userExists = _authService.UserExists(userForRegisterDto.Email);

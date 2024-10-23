@@ -18,7 +18,7 @@ builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterMod
 builder.WebHost.UseIIS();
 
 // Add services to the container.
-builder.Services.AddDbContext<TenderContext>(options =>
+builder.Services.AddDbContext<NotificationContext>(options =>
 {
     options.UseSqlServer(
     builder.Configuration.GetConnectionString("NotificationContext"));
@@ -30,6 +30,8 @@ builder.Services.AddDbContext<TenderContext>(options =>
 //    .Build();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient(); // IHttpClientFactory servisini ekliyoruz
+
 builder.Services.AddRazorPages();
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
