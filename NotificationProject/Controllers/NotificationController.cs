@@ -83,7 +83,7 @@ namespace NotificationProject.Controllers
                 Obj.title=model.title;
                 
                 Obj.CreatedDate = DateTime.Now;
-                Obj.userID = Int32.Parse(User.Claims.FirstOrDefault().Value);
+                Obj.email = User.Claims.FirstOrDefault().Value;
                 
 
                 var a = _notificationService.Add(Obj);
@@ -103,8 +103,7 @@ namespace NotificationProject.Controllers
             }
             catch (Exception ex)
             {
-               
-              
+
                 ViewBag.success = false;
                 ViewBag.HataMesaji = "İşlem Başarısız Oldu !";
                 return View(model);

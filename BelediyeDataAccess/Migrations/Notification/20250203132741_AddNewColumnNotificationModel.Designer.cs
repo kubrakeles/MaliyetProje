@@ -4,6 +4,7 @@ using BelediyeDataAccess.Concrete.EntityFramework.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BelediyeDataAccess.Migrations.Notification
 {
     [DbContext(typeof(NotificationContext))]
-    partial class NotificationContextModelSnapshot : ModelSnapshot
+    [Migration("20250203132741_AddNewColumnNotificationModel")]
+    partial class AddNewColumnNotificationModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

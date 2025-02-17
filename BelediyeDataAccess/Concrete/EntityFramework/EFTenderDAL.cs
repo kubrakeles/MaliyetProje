@@ -12,6 +12,6 @@ namespace BelediyeDataAccess.Concrete.EntityFramework
 {
     public class EFTenderDAL :EFEntityRepositoryBase<Tender,TenderContext>,ITenderDAL
     {
- 
+        
     }
 }
